@@ -1,8 +1,17 @@
 body {
-  padding: 50px;
+  padding: 20px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    color:lightseagreen;
+    text-align: center;
+
 }
 
 a {
-  color: #00B7FF;
+  color: lightseagreen;
+}
+
+
+.tweet-box{
+    background-color: cornsilk;
+    font: 14px "Lucida Console", Helvetica, Arial;
 }

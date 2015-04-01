@@ -1,0 +1,14 @@
+extends layout
+
+block content
+    h1= "MiniTW"
+
+    a(href="tweets") Tweets
+
+    a(href="myprofile") My profile
+    form
+        textarea(class="tweet-box" name="Tweet box", cols="50", rows="5") Write your tweet...
+        br
+        input(type="submit", value="Tweet")
+        br
+
