@@ -1,9 +1,9 @@
 extends layout
 
 block content
-
-    h1= "MiniTW"
-    a(href="tweets") Tweets
-    br
-    a(href="myprofile") My profile
+    ul.nav.nav-pills
+        li.active(role='presentation')
+            a(href='tweets') Tweets
+        li(role='presentation')
+            a(href='myprofile') Profile
 
