@@ -1,17 +1,20 @@
 body {
-  padding: 20px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-    color:lightseagreen;
+    padding: 20px;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    color: #245269;
     text-align: center;
+    background-color: #204d74;
+    background-image: url(../images/toto.jpeg);
+    background-repeat: repeat;
 
 }
 
-a {
-  color: lightseagreen;
-}
+/*a {*/
+  /*color: lightseagreen;*/
+/*}*/
 
 
-.tweet-box{
-    background-color: cornsilk;
-    font: 14px "Lucida Console", Helvetica, Arial;
-}
+/*.tweet-box{*/
+    /*background-color: cornsilk;*/
+    /*font: 14px "Lucida Console", Helvetica, Arial;*/
+/*}*/

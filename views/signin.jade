@@ -4,8 +4,18 @@ block content
 
     h1 Sign in
 
+    form
+        | User name:
+        br
+        input(type="text", name="username")
+        br
+        | Password:
+        br
+        input(type="password", name="password")
+        br
+        input(type="submit", value="Sign in")
 
 
     a(href="tweets") Tweets
     br
-    ref="myprofile") My profile
+    a(href="myprofile") My profile

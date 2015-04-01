@@ -1,8 +1,6 @@
 extends layout
 
 block content
-    h1= "MiniTW"
-    a(href="signin") Sign in
-    br
-    a(href="signup") Sign up
-
+    .btn-group.btn-group-lg(role='group', aria-label='...')
+        button.btn.btn-default.submit-button(type='button',onclick="location.href = 'signin';") Sign in
+        button.btn.btn-default.submit-button(type='button',onclick="location.href = 'signup';") Sign up
