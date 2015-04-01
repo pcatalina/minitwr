@@ -1,10 +1,11 @@
 extends layout
 
 block content
-
-    a(href="tweets") Tweets
-
-    a(href="myprofile") My profile
+    ul.nav.nav-pills
+        li.active(role='presentation')
+            a(href='tweets') Tweets
+        li(role='presentation')
+            a(href='myprofile') Profile
     form
         textarea(class="tweet-box" name="Tweet box", cols="50", rows="5") Write your tweet...
         br
