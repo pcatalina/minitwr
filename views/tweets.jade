@@ -6,9 +6,10 @@ block content
             a(href='tweets') Tweets
         li(role='presentation')
             a(href='myprofile') Profile
-    form
-        textarea(class="tweet-box" name="Tweet box", cols="50", rows="5") Write your tweet...
+
+    form(action='/tweets', method='POST')
+        textarea(name="tweet", rows=3, columns=50)
         br
-        input.btn.btn-primary(type="submit", value="Tweet")
-        br
+        input.btn.btn-primary(type='submit', value="Tweet")
+
 

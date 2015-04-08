@@ -1,12 +1,28 @@
-body {
+body
+{
     padding: 20px;
     font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
     color: #245269;
     text-align: center;
     background-color: #204d74;
-    background-image: url(../images/toto.jpeg);
+    background-image: url(../images/wall.jpeg);
     background-repeat: repeat;
 
+}
+.buttonStart
+{
+    width: 400px;
+    height: 200px;
+    background-image: url(../images/wall.jpeg);
+    font: 100px "MV Boli";
+}
+.buttonMiniTW
+{
+    width: 400px;
+    height: 200px;
+    background-image: url(../images/wall.jpeg);
+    font: 100px "Rage Italic";
+    text-decoration: none;
 }
 
 /*a {*/
