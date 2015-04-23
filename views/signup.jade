@@ -2,7 +2,21 @@ extends layout
 
 block content
 
-    h1 Sign up
+    form(class="registerForm")
+            img(src="../public/images/4.jpeg")
+            label(for='exampleInputText', class="new") New to MiniTW?
+        .form-group
+            input#exampleInputFullName.form-control(class="registerBlanck", type='text', placeholder='Full name')
+        .form-group
+            input#exampleInputEmail1.form-control(class="registerBlanck", type='email', placeholder='Enter email')
+        .form-group
+            input#exampleInputPassword1.form-control(class="registerBlanck", type='password', placeholder='Password')
+        .form-group
+            label(for='exampleInputFile') Profile picture(optional)
+            input#exampleInputFile(class="uploadFile", type='file')
+            br
+            button.btn.btn-default.submit-button(type='button',onclick="location.href = 'tweets';") Sign up
+
 
     a(href="tweets") Tweets
     br
