@@ -1,3 +1,15 @@
+@font-face
+{
+    font-family: "Barata Display Beta";
+    src: url(../fonts/BarataDisplayBetaVersion.otf)
+}
+
+@font-face
+{
+    font-family: "Claire Hand Regular";
+    src: url(../fonts/ClaireHandRegular.otf)
+}
+
 body
 {
     padding: 20px;
@@ -14,15 +26,16 @@ body
     width: 400px;
     height: 200px;
     background-image: url(../images/wall.jpeg);
-    font: 50px "MV Boli";
+    font: 50px "Claire Hand Regular";
 
 }
+
 .buttonMiniTW
 {
     width: 400px;
     height: 200px;
     background-image: url(../images/wall.jpeg);
-    font: 100px "Georgia";
+    font: 150px "Barata Display Beta";
     text-decoration: none;
 }
 .registerForm
@@ -53,9 +66,9 @@ body
     padding:0; margin:0;
 }
 
-.new
+.navbar
 {
-    font: 24px "Tempus Sans ITC";
+    font: 16px "Claire Hand Regular";
 }
 
 /*a {*/
@@ -68,7 +81,3 @@ body
     /*font: 14px "Lucida Console", Helvetica, Arial;*/
 /*}*/
 
-@font-face  {
-    font-family: Open sans;
-    src: url(fonts/Open_Sans/OpenSans-regilar.ttf)
-}
