@@ -14,15 +14,48 @@ body
     width: 400px;
     height: 200px;
     background-image: url(../images/wall.jpeg);
-    font: 100px "MV Boli";
+    font: 50px "MV Boli";
+
 }
 .buttonMiniTW
 {
     width: 400px;
     height: 200px;
     background-image: url(../images/wall.jpeg);
-    font: 100px "Rage Italic";
+    font: 100px "Georgia";
     text-decoration: none;
+}
+.registerForm
+{
+    align-items: center;
+}
+.registerBlanck
+{
+    width: 300px;
+    align-self: center;
+    margin: 0 auto;
+}
+.uploadFile
+{
+    width: 300px;
+    align-self: center;
+    margin: 0 auto;
+    padding-left: 50px;
+}
+
+.rightPosition
+{
+    text-align: right;
+}
+
+.img
+{
+    padding:0; margin:0;
+}
+
+.new
+{
+    font: 24px "Tempus Sans ITC";
 }
 
 /*a {*/
@@ -34,3 +67,8 @@ body
     /*background-color: cornsilk;*/
     /*font: 14px "Lucida Console", Helvetica, Arial;*/
 /*}*/
+
+@font-face  {
+    font-family: Open sans;
+    src: url(fonts/Open_Sans/OpenSans-regilar.ttf)
+}
