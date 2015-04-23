@@ -21,11 +21,20 @@ body
     background-repeat: repeat;
 
 }
-.buttonStart
+.buttonSignIn
 {
     width: 400px;
     height: 200px;
-    background-image: url(../images/wall.jpeg);
+    background-image: url(../images/flyingbirds.jpg);
+    font: 50px "Claire Hand Regular";
+
+}
+
+.buttonSignUp
+{
+    width: 400px;
+    height: 200px;
+    background-image: url(../images/staying%20birds.jpg);
     font: 50px "Claire Hand Regular";
 
 }
