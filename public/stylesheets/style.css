@@ -1,13 +1,13 @@
 @font-face
 {
     font-family: "Barata Display Beta";
-    src: url(../fonts/BarataDisplayBetaVersion.otf)
+    src: url(../text_fonts/BarataDisplayBetaVersion.otf)
 }
 
 @font-face
 {
     font-family: "Claire Hand Regular";
-    src: url(../fonts/ClaireHandRegular.otf)
+    src: url(../text_fonts/ClaireHandRegular.otf)
 }
 
 body
