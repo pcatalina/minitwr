@@ -8,6 +8,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var session = require('express-session');
 
 var routes = require('./routes/index');
 var passport = require('passport')
@@ -22,10 +23,20 @@ app.set('view engine', 'jade');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
+app.use(express.static(path.join(__dirname, '../public')));
 app.use(logger('dev'));
+app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
-app.use(cookieParser());
+app.use(session({
+  secret: 'minisecret',
+  resave: false,
+  saveUninitialized: true,
+  cookie: {
+    secure: false,
+    maxAge: 360000
+  }
+}));
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -34,9 +45,11 @@ passport.serializeUser(function (user, done) {
 });
 
 passport.deserializeUser(function (username, done) {
+
   var user = {
     username: username
   };
+
   done(null, user);
 });
 
@@ -54,14 +67,10 @@ passport.use(new LocalStrategy(
   }
 ));
 
-app.post('/signin',
-  passport.authenticate('local', {
-    successRedirect: '/tweets',
-    failureRedirect: '/'
-  })
-);
-
-app.use(express.static(path.join(__dirname, '../public')));
+app.post('/signin', passport.authenticate('local', {
+  successRedirect : '/tweets',
+  failureRedirect : '/signin'
+}));
 
 app.use('/', routes);
 
