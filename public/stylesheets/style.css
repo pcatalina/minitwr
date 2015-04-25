@@ -1,17 +1,14 @@
-@font-face
-{
+@font-face {
     font-family: "Barata Display Beta";
     src: url(../text_fonts/BarataDisplayBetaVersion.otf)
 }
 
-@font-face
-{
+@font-face {
     font-family: "Claire Hand Regular";
     src: url(../text_fonts/ClaireHandRegular.otf)
 }
 
-body
-{
+body {
     padding: 20px;
     font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
     color: #245269;
@@ -21,8 +18,8 @@ body
     background-repeat: repeat;
 
 }
-.buttonSignIn
-{
+
+.buttonSignIn {
     width: 400px;
     height: 200px;
     background-image: url(../images/flyingbirds.jpg);
@@ -30,8 +27,7 @@ body
 
 }
 
-.buttonSignUp
-{
+.buttonSignUp {
     width: 400px;
     height: 200px;
     background-image: url(../images/staying%20birds.jpg);
@@ -39,54 +35,50 @@ body
 
 }
 
-.buttonMiniTW
-{
+.buttonMiniTW {
     width: 400px;
     height: 200px;
     background-image: url(../images/wall.jpeg);
     font: 150px "Barata Display Beta";
     text-decoration: none;
 }
-.registerForm
-{
+
+.registerForm {
     align-items: center;
 }
-.registerBlanck
-{
+
+.registerBlanck {
     width: 300px;
     align-self: center;
     margin: 0 auto;
 }
-.uploadFile
-{
+
+.uploadFile {
     width: 300px;
     align-self: center;
     margin: 0 auto;
     padding-left: 50px;
 }
 
-.rightPosition
-{
+.rightPosition {
     text-align: right;
 }
 
-.img
-{
-    padding:0; margin:0;
+.img {
+    padding: 0;
+    margin: 0;
 }
 
-.navbar
-{
+.navbar {
     font: 16px "Claire Hand Regular";
 }
 
 /*a {*/
-  /*color: lightseagreen;*/
+/*color: lightseagreen;*/
 /*}*/
 
-
 /*.tweet-box{*/
-    /*background-color: cornsilk;*/
-    /*font: 14px "Lucida Console", Helvetica, Arial;*/
+/*background-color: cornsilk;*/
+/*font: 14px "Lucida Console", Helvetica, Arial;*/
 /*}*/
 
