@@ -10,6 +10,8 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
+var passport = require('passport')
+  , LocalStrategy = require('passport-local').Strategy;
 
 
 var app = express();
