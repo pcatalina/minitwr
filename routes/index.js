@@ -5,11 +5,11 @@ var tweets = [];
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-    res.render('index', { title: 'Express'});
+    res.render('index');
 });
 
 router.get('/tweets', function(req, res, next) {
-    res.render('tweets', { title: 'Express', tweets: tweets  });
+    res.render('tweets', { tweets: tweets  });
 });
 
 router.post('/tweets', function(req, res, next) {
@@ -18,15 +18,15 @@ router.post('/tweets', function(req, res, next) {
 });
 
 router.get('/signin', function(req, res, next) {
-    res.render('signin', { title: 'Express' });
+    res.render('signin');
 });
 
 router.get('/signup', function(req, res, next) {
-    res.render('signup', { title: 'Express' });
+    res.render('signup');
 });
 
 router.get('/myprofile', function(req, res, next) {
-    res.render('myprofile', { title: 'Express' });
+    res.render('myprofile');
 });
 
 module.exports = router;
