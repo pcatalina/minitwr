@@ -3,9 +3,23 @@ var router = express.Router();
 
 var tweetService = require('../services/tweetService');
 
-/* GET home page. */
 router.get('/', function (req, res, next) {
   res.render('index');
+});
+
+router.get('/signin', function (req, res, next) {
+  res.render('signin');
+});
+
+router.get('/signup', function (req, res, next) {
+  res.render('signup');
+});
+
+router.use(function (req, res, next) {
+  if (req.isAuthenticated())
+    return next();
+
+  res.redirect('/signin')
 });
 
 router.get('/tweets', function (req, res, next) {
@@ -17,14 +31,6 @@ router.get('/tweets', function (req, res, next) {
 router.post('/tweets', function (req, res, next) {
   tweetService.addTweet(req.body.tweet);
   res.redirect('/tweets')
-});
-
-router.get('/signin', function (req, res, next) {
-  res.render('signin');
-});
-
-router.get('/signup', function (req, res, next) {
-  res.render('signup');
 });
 
 router.get('/myprofile', function (req, res, next) {
