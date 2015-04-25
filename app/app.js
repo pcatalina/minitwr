@@ -26,6 +26,41 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
+app.use(passport.initialize());
+app.use(passport.session());
+
+passport.serializeUser(function (user, done) {
+  done(null, user.username);
+});
+
+passport.deserializeUser(function (username, done) {
+  var user = {
+    username: username
+  };
+  done(null, user);
+});
+
+passport.use(new LocalStrategy(
+  function (username, password, done) {
+    if (username === 'test' && password === 'test') {
+
+      var user = {
+        username: username
+      };
+
+      return done(null, user);
+    }
+    return done(null, false, {message: 'Invalid username and/or password'});
+  }
+));
+
+app.post('/signin',
+  passport.authenticate('local', {
+    successRedirect: '/tweets',
+    failureRedirect: '/'
+  })
+);
+
 app.use(express.static(path.join(__dirname, '../public')));
 
 app.use('/', routes);
