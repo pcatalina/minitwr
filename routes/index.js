@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-var tweets = [];
+var tweetService = require('../app/tweetService');
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
@@ -9,11 +9,12 @@ router.get('/', function (req, res, next) {
 });
 
 router.get('/tweets', function (req, res, next) {
+  var tweets = tweetService.getTweets();
   res.render('tweets', {tweets: tweets});
 });
 
 router.post('/tweets', function (req, res, next) {
-  tweets.unshift(req.body.tweet);
+  tweetService.addTweet(req.body.tweet);
   res.redirect('/tweets')
 });
 
