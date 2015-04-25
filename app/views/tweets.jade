@@ -50,4 +50,5 @@ html
         input.btn.btn-primary(type='submit', value='Tweet')
     ul
         - each tweet in tweets
-            li= tweet
+            li= '(' +  tweet.date + ' ' + tweet.time + ')'
+                p #{tweet.text}

@@ -9,8 +9,9 @@ router.get('/', function (req, res, next) {
 });
 
 router.get('/tweets', function (req, res, next) {
-  var tweets = tweetService.getTweets();
-  res.render('tweets', {tweets: tweets});
+  tweetService.getTweets(function (err, tweets) {
+    res.render('tweets', {tweets: tweets});
+  });
 });
 
 router.post('/tweets', function (req, res, next) {
