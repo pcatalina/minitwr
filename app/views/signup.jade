@@ -1,23 +1,28 @@
 extends layout
 
+script.
+    document.getElementById("buttonSignUp").innerHTML = signUp();
+
+
 block content
 
     form(class="registerForm")
-            img(src="../images/4.jpeg")
-            label(for='exampleInputText', class="new") New to MiniTW?
+            label(for='exampleInputText', class="registerForm")
+                img(src="../images/TwitterIntro-48.png")
+                |New to MiniTW?
         .form-group
-            input#exampleInputFullName.form-control.registerBlanck(type='text', placeholder='Full name')
+            input#exampleInputFullName.form-control( class="registerBlanck", type='text', placeholder='Full name')
         .form-group
             input#exampleInputEmail1.form-control.registerBlanck(type='email', placeholder='Enter email')
         .form-group
             input#exampleInputPassword1.form-control.registerBlanck(type='password', placeholder='Password')
         .form-group
-            label(for='exampleInputFile') Profile picture(optional)
+            label(for='exampleInputFile')
+                span.glyphicon.glyphicon-picture
+                |(optional)
             input#exampleInputFile(class="uploadFile", type='file')
             br
-            button.btn.btn-default.submit-button(type='button',onclick="location.href = 'tweets';") Sign up
+            button#buttonSignUp.btn.btn-default.submit-button(type='button') Sign up
 
 
-    a(href="tweets") Tweets
-    br
-    a(href="myprofile") My profile
+
