@@ -1,11 +1,11 @@
 @font-face {
     font-family: "Barata Display Beta";
-    src: url(../text_fonts/BarataDisplayBetaVersion.otf)
+    src: url(../fonts/BarataDisplayBetaVersion.otf)
 }
 
 @font-face {
     font-family: "Claire Hand Regular";
-    src: url(../text_fonts/ClaireHandRegular.otf)
+    src: url(../fonts/ClaireHandRegular.otf)
 }
 
 body {
@@ -36,6 +36,7 @@ body {
 }
 
 .miniTW
+{
     width: 400px;
     height: 200px;
     font: 150px "Barata Display Beta";
