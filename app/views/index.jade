@@ -2,5 +2,37 @@ extends layout
 
 block content
     .btn-group.btn-group-lg(role='group', aria-label='...')
-    button.btn.btn-default.submit-button.buttonSignIn(type='button', onclick="location.href = 'signin';") Sign in
-    button.btn.btn-default.submit-button.buttonSignUp(type='button', onclick="location.href = 'signup';") Sign up
+    //button.btn.btn-default.submit-button(class="buttonSignIn", type='button',onclick="location.href = 'signin';") Sign in
+
+    button.btn.btn-default.submit-button(class="buttonSignIn", type='button', data-toggle='modal', data-target='#exampleModal', data-whatever='@mdo') Sign in
+
+    #exampleModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='exampleModalLabel', aria-hidden='true')
+        .modal-dialog
+            .modal-content
+                .modal-header
+                    button.close(type='button', data-dismiss='modal', aria-label='Close')
+                        span(aria-hidden='true') ×
+                    h4#exampleModalLabel.modal-title Welcome :)
+                .modal-body
+                    form
+                        | User name:
+                        br
+                        input(type="text", name="username")
+                        br
+                        | Password:
+                        br
+                        input(type="password", name="password")
+                .modal-footer
+                    button.btn.btn-default(type='button', data-dismiss='modal') Close
+                    button.btn.btn-primary(type='button') Sign in
+
+    button.btn.btn-default.submit-button(class="buttonSignUp", type='button',onclick="location.href = 'signup';") Sign up
+
+
+
+
+
+
+
+
+

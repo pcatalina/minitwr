@@ -35,16 +35,18 @@ body {
 
 }
 
-.buttonMiniTW {
+.miniTW
     width: 400px;
     height: 200px;
-    background-image: url(../images/wall.jpeg);
     font: 150px "Barata Display Beta";
-    text-decoration: none;
+    text-align-all:  center;
+    margin: 0 auto ;
+    text-decoration: none !important
 }
 
 .registerForm {
     align-items: center;
+    font: 20px "Claire Hand Regular";
 }
 
 .registerBlanck {
