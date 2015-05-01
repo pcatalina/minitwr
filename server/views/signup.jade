@@ -6,10 +6,11 @@ script.
 
 block content
 
-    form(class="registerForm")
-            label(for='exampleInputText', class="registerForm")
-                img(src="../images/TwitterIntro-48.png")
-                |New to MiniTW?
+    form(class="registerForm", action="/signup", method="POST")
+        label(for='exampleInputText', class="registerForm")
+            img(src="../images/TwitterIntro-48.png")
+            | New to MiniTW?
+
         .form-group
             input#exampleInputFullName.form-control( class="registerBlanck", type='text', placeholder='Full name')
         .form-group
@@ -19,10 +20,10 @@ block content
         .form-group
             label(for='exampleInputFile')
                 span.glyphicon.glyphicon-picture
-                |(optional)
-            input#exampleInputFile(class="uploadFile", type='file')
-            br
-            button#buttonSignUp.btn.btn-default.submit-button(type='button') Sign up
+                | (optional)
+        input#exampleInputFile(class="uploadFile", type='file')
+
+        button#buttonSignUp.btn.btn-default.submit-button(type='submit') Sign up
 
 
 
