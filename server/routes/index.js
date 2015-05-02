@@ -1,40 +1,54 @@
-var express = require('express');
-var router = express.Router();
+'use strict';
 
-var tweetService = require('../services/tweetService');
+module.exports = function(express, app, mongoose) {
+  var router = express.Router();
 
-router.get('/', function (req, res, next) {
-  res.render('index');
-});
+  var tweetService = require('../services/tweetService')(mongoose),
+    userService = require('../services/userService')(mongoose),
+    authService = require('../services/authService')(app);
 
-router.get('/signin', function (req, res, next) {
-  res.render('signin');
-});
+// Routes that don't require authentication
+  router.get('/:path(signin|signup)',
+    function(req, res, next) {
+      res.render(req.param('path'));
+    });
 
-router.get('/signup', function (req, res, next) {
-  res.render('signup');
-});
+// Routes that require authentication
+  router.get('/:path(myprofile)',
+    authService.ensureAuthenticated,
+    function(req, res) {
+      res.render(req.param('path'), { user: req.user });
+    });
 
-router.use(function (req, res, next) {
-  if (req.isAuthenticated())
-    return next();
+// TODO: move to API
+  router.post('/signup', userService.register);
 
-  res.redirect('/signin')
-});
+// TODO: move to API
+  router.post('/signin', authService.doAuthenticate);
 
-router.get('/tweets', function (req, res, next) {
-  tweetService.getTweets(function (err, tweets) {
-    res.render('tweets', {tweets: tweets});
+
+// TODO: move to API
+  router.get('/tweets',
+    authService.ensureAuthenticated,
+    function(req, res, next) {
+      tweetService.getTweets(function(err, tweets) {
+        res.render('tweets', { tweets: tweets });
+      });
+    });
+
+// TODO: move to API
+  router.post('/tweets',
+    authService.ensureAuthenticated,
+    function(req, res, next) {
+      tweetService.addTweet(req.body.tweet);
+      res.redirect('/tweets')
+    });
+
+
+// Anything else goes to index
+  router.get('/*', function(req, res, next) {
+    res.render('index');
   });
-});
 
-router.post('/tweets', function (req, res, next) {
-  tweetService.addTweet(req.body.tweet);
-  res.redirect('/tweets')
-});
-
-router.get('/myprofile', function (req, res, next) {
-  res.render('myprofile');
-});
-
-module.exports = router;
+  return router;
+};

@@ -3,19 +3,16 @@
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
 var express = require('express');
+var app = express();
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
-
-var routes = require('./routes/index');
-var passport = require('passport')
-  , LocalStrategy = require('passport-local').Strategy;
-
-
-var app = express();
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/minitwr');
+var router = require('./routes/index');
 
 // view engine setup
 app.set('views', path.join(__dirname, './views'));
@@ -37,65 +34,9 @@ app.use(session({
     maxAge: 360000
   }
 }));
-app.use(passport.initialize());
-app.use(passport.session());
-
-passport.serializeUser(function(user, done) {
-  done(null, user.username);
-});
-
-passport.deserializeUser(function(username, done) {
-
-  var user = {
-    username: username
-  };
-
-  done(null, user);
-});
-
-passport.use(new LocalStrategy(
-  function(username, password, done) {
-
-    console.log("local auth: " + username + " " + password );
-
-    if(username === 'test' && password === 'test') {
-
-      console.log("local auth succeeded!");
-
-      var user = {
-        username: username
-      };
 
 
-      return done(null, user);
-    }
-
-    console.log("local auth failed!");
-    return done(null, false, { message: 'Invalid username and/or password' });
-  }
-));
-
-
-app.post('/signin', passport.authenticate('local', {
-  successRedirect: '/tweets',
-  failureRedirect: '/signin'
-}));
-
-var users = [];
-
-app.post('/signup', function(req, res, next) {
-  var user = {
-    username: req.body.username,
-    email: req.body.email,
-    password: req.body.password
-  };
-
-  users.push(user);
-
-  res.redirect('/tweets');
-});
-
-app.use('/', routes);
+app.use('/', router(express, app, mongoose));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

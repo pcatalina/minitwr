@@ -1,11 +1,8 @@
-(function () {
-  'use strict';
+'use strict';
 
-  var mongoose = require('mongoose'),
-    moment = require('moment');
+module.exports = function(mongoose) {
 
-
-  mongoose.connect('mongodb://localhost/minitwr');
+  var moment = require('moment');
 
   var tweetSchema = {
     text: String,
@@ -14,42 +11,42 @@
 
   var Tweet = mongoose.model('tweetModel', tweetSchema);
 
+  return {
+    addTweet: function(tweetText) {
 
-  module.exports.addTweet = function (tweetText) {
+      var tweet = new Tweet({ text: tweetText, date: moment() });
 
-    var tweet = new Tweet({text: tweetText, date: moment()});
-
-    tweet.save(function (err) {
-      if (err)
-        console.log(err);
-    });
-  };
-
-  module.exports.getTweets = function (cb) {
-
-    var tweetsToDisplay = [];
-
-
-    Tweet.find(function (err, tweets) {
-
-      tweets.forEach(function (tw) {
-
-        var date = moment(tw.date);
-
-        var tweetToDisplay;
-
-        tweetToDisplay = {
-          text: tw.text,
-          time: date.format('HH:mm:ss'),
-          date: date.format('DD-MM-YYYY')
-        };
-
-        tweetsToDisplay.push(tweetToDisplay)
+      tweet.save(function(err) {
+        if(err)
+          console.log(err);
       });
+    },
+
+    getTweets: function(cb) {
+
+      var tweetsToDisplay = [];
 
 
-      cb(err, tweetsToDisplay);
-    });
+      Tweet.find(function(err, tweets) {
+
+        tweets.forEach(function(tw) {
+
+          var date = moment(tw.date);
+
+          var tweetToDisplay;
+
+          tweetToDisplay = {
+            text: tw.text,
+            time: date.format('HH:mm:ss'),
+            date: date.format('DD-MM-YYYY')
+          };
+
+          tweetsToDisplay.push(tweetToDisplay)
+        });
+
+
+        cb(err, tweetsToDisplay);
+      });
+    }
   }
-
-})();
+};
