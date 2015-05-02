@@ -3,9 +3,11 @@
 module.exports = function(express, app, mongoose) {
   var router = express.Router();
 
-  var userService = require('./services/userService')(mongoose),
-    tweetService = require('./services/tweetService')(mongoose),
+  // TODO: get rid of this by removing non-API routes
+  var userService = require('./services/userService')(),
+    tweetService = require('./services/tweetService')(),
     authService = require('./services/authService')(app, userService);
+
 
 // Routes that don't require authentication
   router.get('/:path(signin|signup)',
@@ -34,6 +36,10 @@ module.exports = function(express, app, mongoose) {
 
 // TODO: move to API
   router.post('/tweets', authService.ensureAuthenticated, tweetService.postTweet);
+
+// API routes
+  router.use('/api/users', require('./services/userRouter')(userService));
+  router.use('/api/tweets', require('./services/tweetRouter')(tweetService));
 
 // Anything else goes to index
   router.get('/*', function(req, res, next) {

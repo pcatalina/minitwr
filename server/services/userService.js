@@ -1,12 +1,17 @@
 'use strict';
 
-module.exports = function(mongoose) {
+module.exports = function() {
 
-  var userSchema = {
-    username: String,
-    email: String,
-    password: String
-  };
+  var mongoose = require('mongoose'),
+    Schema = mongoose.Schema;
+
+
+  var userSchema = new Schema({
+      username: String,
+      email: String,
+      password: String
+    },
+    { versionKey: false });
 
   var User = mongoose.model('User', userSchema);
 
@@ -30,13 +35,29 @@ module.exports = function(mongoose) {
     });
   }
 
-
   return {
-    create: function() {
+
+    index: function(req, res) {
+
+    },
+
+    show: function(req, res) {
+
+    },
+
+    create: function(req, res) {
       addUser(req, res, function(err, user) {
         if(err) return onError(err, req, res);
         return res.json(201, user);
       });
+    },
+
+    update: function(req, res) {
+
+    },
+
+    destroy: function(req, res) {
+
     },
 
     register: function(req, res, next) {

@@ -1,15 +1,17 @@
 'use strict';
 
-module.exports = function(mongoose) {
+module.exports = function() {
 
-  var moment = require('moment'),
-    Schema = mongoose.Schema;
+  var mongoose = require('mongoose'),
+    Schema = mongoose.Schema,
+    moment = require('moment');
 
-  var tweetSchema = {
-    user: { type: Schema.Types.ObjectId, ref: 'User' },
-    text: String,
-    date: Date
-  };
+  var tweetSchema = new Schema({
+      user: { type: Schema.Types.ObjectId, ref: 'User' },
+      text: String,
+      date: Date
+    },
+    { versionKey: false });
 
   var Tweet = mongoose.model('Tweet', tweetSchema);
 
@@ -42,12 +44,16 @@ module.exports = function(mongoose) {
   }
 
   return {
+
     index: function(req, res) {
       getAllTweets(req, res, function(err, tweets) {
         if(err || !tweets) return onError(res, err);
-        res.render('tweets', { tweets: tweets });
+        return res.json(200, tweets);
       });
-      return res.json(200, tweets);
+    },
+
+    show: function(req, res) {
+
     },
 
     create: function(req, res) {
@@ -55,6 +61,14 @@ module.exports = function(mongoose) {
         if(err || !tweet) return onError(res, err);
         return res.json(201, tweet);
       });
+    },
+
+    update: function(req, res) {
+
+    },
+
+    destroy: function(req, res) {
+
     },
 
     postTweet: function(req, res) {
