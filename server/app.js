@@ -27,7 +27,7 @@ app.use(express.static(path.join(__dirname, '../public')));
 app.use(logger('dev'));
 app.use(cookieParser());
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(session({
   secret: 'minisecret',
   resave: false,
@@ -40,11 +40,11 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-passport.serializeUser(function (user, done) {
+passport.serializeUser(function(user, done) {
   done(null, user.username);
 });
 
-passport.deserializeUser(function (username, done) {
+passport.deserializeUser(function(username, done) {
 
   var user = {
     username: username
@@ -54,22 +54,31 @@ passport.deserializeUser(function (username, done) {
 });
 
 passport.use(new LocalStrategy(
-  function (username, password, done) {
-    if (username === 'test' && password === 'test') {
+  function(username, password, done) {
+
+    console.log("local auth: " + username + " " + password );
+
+    if(username === 'test' && password === 'test') {
+
+      console.log("local auth succeeded!");
 
       var user = {
         username: username
       };
 
+
       return done(null, user);
     }
-    return done(null, false, {message: 'Invalid username and/or password'});
+
+    console.log("local auth failed!");
+    return done(null, false, { message: 'Invalid username and/or password' });
   }
 ));
 
+
 app.post('/signin', passport.authenticate('local', {
-  successRedirect : '/tweets',
-  failureRedirect : '/signin'
+  successRedirect: '/tweets',
+  failureRedirect: '/signin'
 }));
 
 var users = [];
@@ -89,7 +98,7 @@ app.post('/signup', function(req, res, next) {
 app.use('/', routes);
 
 // catch 404 and forward to error handler
-app.use(function (req, res, next) {
+app.use(function(req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
   next(err);
@@ -99,8 +108,8 @@ app.use(function (req, res, next) {
 
 // development error handler
 // will print stacktrace
-if (app.get('env') === 'development') {
-  app.use(function (err, req, res, next) {
+if(app.get('env') === 'development') {
+  app.use(function(err, req, res, next) {
 
     console.error(err.message);
     console.error(err.status);
@@ -117,7 +126,7 @@ if (app.get('env') === 'development') {
 
 // production error handler
 // no stacktraces leaked to user
-app.use(function (err, req, res, next) {
+app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error', {
     message: err.message,

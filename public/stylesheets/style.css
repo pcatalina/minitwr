@@ -35,13 +35,12 @@ body {
 
 }
 
-.miniTW
-{
+.miniTW {
     width: 400px;
     height: 200px;
     font: 150px "Barata Display Beta";
-    text-align-all:  center;
-    margin: 0 auto ;
+    text-align-all: center;
+    margin: 0 auto;
     text-decoration: none !important
 }
 
