@@ -1,0 +1,17 @@
+.container-fluid
+    form.form-horizontal(action='/signin', method='POST', role="form")
+        .form-group
+            .col-sm-2
+                label.control-label(for="email") E-mail:
+            .col-sm-10
+                input.form-control(name="email", type="email",
+                placeholder="Enter e-mail")
+        .form-group
+            .col-sm-2
+                label.control-label(for="password") Password:
+            .col-sm-10
+                input.form-control(name="password", type="password",
+                placeholder="Enter password")
+        .form-group
+            .col-sm-12
+                input.btn.btn-default.pull-right(type="submit", value="Sign in")
