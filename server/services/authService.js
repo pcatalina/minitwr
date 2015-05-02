@@ -26,16 +26,12 @@ module.exports = function(app, userService) {
     }));
 
   passport.serializeUser(function(user, done) {
-    done(null, user.username);
+    if(user)
+      done(null, user._id);
   });
 
-  passport.deserializeUser(function(username, done) {
-
-    var user = {
-      username: username
-    };
-
-    done(null, user);
+  passport.deserializeUser(function(id, done) {
+    userService.deserializeUser(id, done);
   });
 
   return {
@@ -62,7 +58,6 @@ module.exports = function(app, userService) {
             return res.redirect('/tweets');
           });
         })(req, res, next);
-
     },
 
     logOut: function(req, res, next) {
@@ -74,6 +69,7 @@ module.exports = function(app, userService) {
       if(req.isAuthenticated())
         return next();
       else
+      // TODO: return json fail and blame on client side instead
         res.redirect('/signin')
     }
   }

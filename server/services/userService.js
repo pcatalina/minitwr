@@ -30,6 +30,7 @@ module.exports = function(mongoose) {
     });
   }
 
+
   return {
     create: function() {
       addUser(req, res, function(err, user) {
@@ -60,6 +61,19 @@ module.exports = function(mongoose) {
           else
             return done(null, false); // wrong password
         });
+    },
+
+    deserializeUser: function(id, done) {
+      User.findOne({ _id: id }).exec(function(err, user) {
+        if(err) return done(err, false);
+
+        if(user) {
+          return done(null, user);
+        }
+        else {
+          return done(null, false);
+        }
+      });
     }
   }
 };
