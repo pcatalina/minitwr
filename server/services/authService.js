@@ -44,7 +44,7 @@ module.exports = function(app) {
   });
 
   return {
-    doAuthenticate: function(req, res, next) {
+    logIn: function(req, res, next) {
 
       passport.authenticate('local',
         function(err, user, info) {

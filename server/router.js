@@ -24,7 +24,7 @@ module.exports = function(express, app, mongoose) {
   router.post('/signup', userService.register);
 
 // TODO: move to API
-  router.post('/signin', authService.doAuthenticate);
+  router.post('/signin', authService.logIn);
 
 
 // TODO: move to API
