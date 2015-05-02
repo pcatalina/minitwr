@@ -30,22 +30,10 @@ module.exports = function(express, app, mongoose) {
   router.get('/logout', authService.logOut);
 
 // TODO: move to API
-  router.get('/tweets',
-    authService.ensureAuthenticated,
-    function(req, res, next) {
-      tweetService.getTweets(function(err, tweets) {
-        res.render('tweets', { tweets: tweets });
-      });
-    });
+  router.get('/tweets', authService.ensureAuthenticated, tweetService.getTweets);
 
 // TODO: move to API
-  router.post('/tweets',
-    authService.ensureAuthenticated,
-    function(req, res, next) {
-      tweetService.addTweet(req.body.tweet);
-      res.redirect('/tweets')
-    });
-
+  router.post('/tweets', authService.ensureAuthenticated, tweetService.postTweet);
 
 // Anything else goes to index
   router.get('/*', function(req, res, next) {

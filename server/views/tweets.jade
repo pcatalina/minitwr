@@ -43,11 +43,11 @@ block content
 
 
     form(action='/tweets', method='POST')
-        textarea(name="tweet", rows=7, columns=150)
+        textarea(name="tweetText", rows=7, columns=150)
         br
         input.btn.btn-primary(type='submit', value='Tweet')
 
     ul
-        - each tweet in tweets
-            li= '(' + tweet.date + ' ' + tweet.time + ')'
+        -each tweet in tweets
+            li= tweet.date
             p #{tweet.text}

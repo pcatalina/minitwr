@@ -11,42 +11,60 @@ module.exports = function(mongoose) {
 
   var Tweet = mongoose.model('tweetModel', tweetSchema);
 
+  function onError(err, req, res) {
+    console.log(err);
+    return res.send(500, err);
+  }
+
+  function getAllTweets(req, res, done) {
+    Tweet.find(function(err, tweets) {
+      if(err) return onError(res, err);
+      done(err, tweets);
+    });
+  }
+
+  function addTweet(req, res, done) {
+    // TODO: verify data
+    var tweet = {
+      text: req.body.tweetText,
+      date: moment()
+    };
+
+    Tweet.create(tweet, function(err, tweet) {
+      if(err) return onError(res, err);
+      done(err, tweet);
+    });
+  }
+
   return {
-    addTweet: function(tweetText) {
+    index: function(req, res) {
+      getAllTweets(req, res, function(err, tweets) {
+        if(err || !tweets) return onError(res, err);
+        res.render('tweets', { tweets: tweets });
+      });
+      return res.json(200, tweets);
+    },
 
-      var tweet = new Tweet({ text: tweetText, date: moment() });
-
-      tweet.save(function(err) {
-        if(err)
-          console.log(err);
+    create: function(req, res) {
+      addTweet(req, res, function(err, tweet) {
+        if(err || !tweet) return onError(res, err);
+        return res.json(201, tweet);
       });
     },
 
-    getTweets: function(cb) {
+    postTweet: function(req, res) {
+      addTweet(req, res, function(err, tweet) {
+        if(err || !tweet) return onError(res, err);
+        return res.redirect('/tweets');
+      });
+    },
 
-      var tweetsToDisplay = [];
-
-
-      Tweet.find(function(err, tweets) {
-
-        tweets.forEach(function(tw) {
-
-          var date = moment(tw.date);
-
-          var tweetToDisplay;
-
-          tweetToDisplay = {
-            text: tw.text,
-            time: date.format('HH:mm:ss'),
-            date: date.format('DD-MM-YYYY')
-          };
-
-          tweetsToDisplay.push(tweetToDisplay)
-        });
-
-
-        cb(err, tweetsToDisplay);
+    getTweets: function(req, res) {
+      getAllTweets(req, res, function(err, tweets) {
+        if(err || !tweets) return onError(res, err);
+        res.render('tweets', { tweets: tweets });
       });
     }
-  }
+  };
 };
+
