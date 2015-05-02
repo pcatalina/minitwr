@@ -2,9 +2,11 @@
 
 module.exports = function(mongoose) {
 
-  var moment = require('moment');
+  var moment = require('moment'),
+    Schema = mongoose.Schema;
 
   var tweetSchema = {
+    user: { type: Schema.Types.ObjectId, ref: 'User' },
     text: String,
     date: Date
   };
@@ -17,15 +19,18 @@ module.exports = function(mongoose) {
   }
 
   function getAllTweets(req, res, done) {
-    Tweet.find(function(err, tweets) {
-      if(err) return onError(res, err);
-      done(err, tweets);
-    });
+    Tweet.find()
+      .populate('user')
+      .exec(function(err, tweets) {
+        if(err) return onError(res, err);
+        done(err, tweets);
+      });
   }
 
   function addTweet(req, res, done) {
     // TODO: verify data
     var tweet = {
+      user: req.user.id,
       text: req.body.tweetText,
       date: moment()
     };
