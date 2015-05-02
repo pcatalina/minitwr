@@ -8,34 +8,41 @@ module.exports = function(mongoose) {
     password: String
   };
 
-  var user = mongoose.model('userModel', userSchema);
+  var User = mongoose.model('userModel', userSchema);
 
+  function onError(err, req, res) {
+    console.log(err);
+    return res.send(500, err);
+  }
+
+  function addUser(req, res, done) {
+
+    // TODO: validate data
+
+    var user = {
+      username: req.body.username,
+      email: req.body.email,
+      password: req.body.password
+    };
+
+    User.create(user, function(err, user) {
+      done(err, user);
+    });
+  }
 
   return {
-    addUser: function(username, email, password) {
-
-      var user = new user({
-        username: username,
-        email: email,
-        password: password()
-      });
-
-      user.save(function(err) {
-        if(err)
-          console.log(err);
+    create: function() {
+      addUser(req, res, function(err, user) {
+        if(err) return onError(err, req, res);
+        return res.json(201, user);
       });
     },
 
     register: function(req, res, next) {
-      var user = {
-        username: req.body.username,
-        email: req.body.email,
-        password: req.body.password
-      };
-
-      user.addUser(user);
-
-      res.redirect('/tweets');
+      addUser(req, res, function(err, user) {
+        if(err) return onError(err, req, res);
+        return res.redirect('/tweets');
+      });
     }
   };
 };
