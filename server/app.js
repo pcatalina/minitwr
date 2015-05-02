@@ -72,6 +72,20 @@ app.post('/signin', passport.authenticate('local', {
   failureRedirect : '/signin'
 }));
 
+var users = [];
+
+app.post('/signup', function(req, res, next) {
+  var user = {
+    username: req.body.username,
+    email: req.body.email,
+    password: req.body.password
+  };
+
+  users.push(user);
+
+  res.redirect('/tweets');
+});
+
 app.use('/', routes);
 
 // catch 404 and forward to error handler
