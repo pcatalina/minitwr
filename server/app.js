@@ -12,7 +12,7 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/minitwr');
-var router = require('./routes/index');
+var router = require('./router');
 
 // view engine setup
 app.set('views', path.join(__dirname, './views'));

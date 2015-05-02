@@ -3,9 +3,9 @@
 module.exports = function(express, app, mongoose) {
   var router = express.Router();
 
-  var tweetService = require('../services/tweetService')(mongoose),
-    userService = require('../services/userService')(mongoose),
-    authService = require('../services/authService')(app);
+  var tweetService = require('./services/tweetService')(mongoose),
+    userService = require('./services/userService')(mongoose),
+    authService = require('./services/authService')(app);
 
 // Routes that don't require authentication
   router.get('/:path(signin|signup)',
