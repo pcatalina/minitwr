@@ -7,16 +7,19 @@ script.
 block content
 
     form(class="registerForm", action="/signup", method="POST")
-        label(for='exampleInputText', class="registerForm")
+        label(for='exampleInputText')
             img(src="../images/TwitterIntro-48.png")
             | New to MiniTW?
 
         .form-group
-            input#exampleInputFullName.form-control( class="registerBlanck", type='text', placeholder='Full name')
+            input.form-control.registerBlanck(name="username", type='text',
+            placeholder='Full name')
         .form-group
-            input#exampleInputEmail1.form-control.registerBlanck(type='email', placeholder='Enter email')
+            input.form-control.registerBlanck(name="email", type='email',
+            placeholder='Enter email')
         .form-group
-            input#exampleInputPassword1.form-control.registerBlanck(type='password', placeholder='Password')
+            input.form-control.registerBlanck(name="password", type='password',
+            placeholder='Password')
         .form-group
             label(for='exampleInputFile')
                 span.glyphicon.glyphicon-picture
