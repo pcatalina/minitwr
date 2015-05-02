@@ -20,7 +20,7 @@ module.exports = function(mongoose) {
 
   function getAllTweets(req, res, done) {
     Tweet.find()
-      .populate('user')
+      .populate('user', 'username')
       .exec(function(err, tweets) {
         if(err) return onError(res, err);
         done(err, tweets);
