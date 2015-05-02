@@ -70,6 +70,11 @@ module.exports = function(app) {
 
     },
 
+    logOut: function(req, res, next) {
+      req.logout();
+      res.redirect('/');
+    },
+
     ensureAuthenticated: function(req, res, next) {
       if(req.isAuthenticated())
         return next();
