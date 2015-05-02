@@ -3,12 +3,9 @@ doctype html
 html
     head
         title MiniTW
-        button(type="button", class="btn btn-link", class="miniTW", onclick="location.href = '/';") MiniTW
-        br
-        link(href="vendor/bootstrap.min.css", rel="stylesheet")
-        link(href="vendor/bootstrap-theme.min.css", rel="stylesheet")
-        link(rel='stylesheet', href='/stylesheets/style.css')
+        include styles
+
     body
+        button(type="button", class="btn btn-link", class="miniTW", onclick="location.href = '/';") MiniTW
         block content
-        script(src="vendor/jquery-2.1.3.min.js")
-        script(src="vendor/bootstrap.min.js")
+        include scripts
