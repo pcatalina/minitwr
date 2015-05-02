@@ -43,7 +43,23 @@ module.exports = function(mongoose) {
         if(err) return onError(err, req, res);
         return res.redirect('/tweets');
       });
-    }
-  };
-};
+    },
 
+    authenticateUser: function(username, password, done) {
+      User.findOne({
+          username: username.toLowerCase()
+        },
+        function(err, user) {
+          if(err)
+            return done(err, false);
+
+          if(!user) // user not found
+            return done(null, false);
+          else if(user.password === password) // right password
+            return done(null, user);
+          else
+            return done(null, false); // wrong password
+        });
+    }
+  }
+};

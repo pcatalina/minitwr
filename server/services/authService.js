@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = function(app) {
+module.exports = function(app, userService) {
   var passport = require('passport');
 
   app.use(passport.initialize());
@@ -11,24 +11,19 @@ module.exports = function(app) {
   passport.use(new LocalStrategy(
     function(username, password, done) {
 
-      console.log("local auth: " + username + " " + password);
+      console.log("Local auth\nUsername:\t" + username + "n\Password:\t" + password);
 
-      if(username === 'test' && password === 'test') {
+      userService.authenticateUser(username, password, function(err, user) {
 
-        console.log("local auth succeeded!");
-
-        var user = {
-          username: username
-        };
-
-
-        return done(null, user);
-      }
-
-      console.log("local auth failed!");
-      return done(null, false, { message: 'Invalid username and/or password' });
-    }
-  ));
+        if(!user) {
+          console.log("local auth failed!");
+          return done(null, false, { message: 'Invalid username and/or password' });
+        }
+        else {
+          return done(null, user);
+        }
+      });
+    }));
 
   passport.serializeUser(function(user, done) {
     done(null, user.username);
