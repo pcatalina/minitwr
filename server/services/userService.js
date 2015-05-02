@@ -8,7 +8,7 @@ module.exports = function(mongoose) {
     password: String
   };
 
-  var User = mongoose.model('userModel', userSchema);
+  var User = mongoose.model('User', userSchema);
 
   function onError(err, req, res) {
     console.log(err);

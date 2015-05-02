@@ -9,7 +9,7 @@ module.exports = function(mongoose) {
     date: Date
   };
 
-  var Tweet = mongoose.model('tweetModel', tweetSchema);
+  var Tweet = mongoose.model('Tweet', tweetSchema);
 
   function onError(err, req, res) {
     console.log(err);
