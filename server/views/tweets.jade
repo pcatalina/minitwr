@@ -42,7 +42,7 @@ block content
                                     | Log out
 
 
-    form(action='/tweets', method='POST')
+    form.textForm(action='/tweets', method='POST')
         textarea(name="tweetText", rows=7, columns=150)
         br
         input.btn.btn-primary(type='submit', value='Tweet')
