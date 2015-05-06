@@ -16,14 +16,33 @@ body {
     background-color: #204d74;
     background-image: url(../images/wall.jpeg);
     background-repeat: repeat;
-
 }
+
+.tweets{
+    width: 100%;
+    list-style-type: none;
+    font: 14px "Arial";
+    color: #ffffff;
+    background-color: #245269;
+    border-radius: 10px;
+}
+
+.textForm{
+
+  float:left;
+  width: 250px;
+    height: 300px;
+  padding: 12px 20px 12px 20px;
+  background: #fcfcfc;
+  color: #2a2a2a;
+          }
+
 
 .buttonSignIn {
     width: 400px;
     height: 200px;
     background-image: url(../images/flyingbirds.jpg);
-    font: 50px "Claire Hand Regular";
+    font: 40px "Claire Hand Regular" !important;
 
 }
 
@@ -31,7 +50,7 @@ body {
     width: 400px;
     height: 200px;
     background-image: url(../images/staying%20birds.jpg);
-    font: 50px "Claire Hand Regular";
+    font: 40px "Claire Hand Regular" !important;
 
 }
 
