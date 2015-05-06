@@ -3,10 +3,10 @@ extends includes/layout
 block content
     .btn-group.btn-group-lg(role='group', aria-label='...')
 
-        button.btn.btn-default.submit-button(class="buttonSignIn", type='button',
+        button.btn.btn-default.submit-button.buttonSignIn(type='button',
         data-toggle='modal', data-target='#exampleModal', data-whatever='@mdo') Sign in
 
-        button.btn.btn-default.submit-button(class="buttonSignUp", type='button',onclick="location.href = 'signup';") Sign up
+        button.btn.btn-default.submit-button.buttonSignUp(type='button',onclick="location.href = 'signup';") Sign up
 
         #exampleModal.modal.fade(tabindex='-1', role='dialog',
         aria-labelledby='exampleModalLabel', aria-hidden='true')
