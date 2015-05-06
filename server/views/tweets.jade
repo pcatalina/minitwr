@@ -47,10 +47,14 @@ block content
         br
         input.btn.btn-primary(type='submit', value='Tweet')
 
-    ul
+    ul#tweet-list
         // TODO: Make it beautiful
         -each tweet in tweets
             //TODO: format date with moment.js
-            li date: #{tweet.date}
-            p user: #{tweet.user.username}
-            p text: #{tweet.text}
+            li
+                p#date #{tweet.date}
+                p user: #{tweet.user.username}
+                p text: #{tweet.text}
+
+    script(src="vendor/moment.min.js")
+    script(src="scripts/tweets.js")
