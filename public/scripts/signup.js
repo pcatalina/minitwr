@@ -1,5 +1,5 @@
 var fullName = document.getElementById("exampleInputFullName").innerHTML;
-;
+
 var eMail = document.getElementById("exampleInputEmail1").innerHTML;
 var passWord = document.getElementById("exampleInputPassword1").innerHTML;
 //var signUp = false;
