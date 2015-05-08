@@ -1,60 +1,22 @@
-extends includes/layout
+extends includes/basic+navbar
 
 block content
-    nav.navbar.navbar-default
-        .container-fluid
-            .navbar-header
-                button.navbar-toggle.collapsed(, class="navbar", type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1')
-                    span.sr-only Toggle navigation
-                    span.icon-bar
-                    span.icon-bar
-                    span.icon-bar
-                a.navbar-brand(href='/tweets', class="img")
-                    img(alt='Brand', src="../images/Twitter-48.png")
-            #bs-example-navbar-collapse-1.collapse.navbar-collapse
-                ul.nav.navbar-nav
-                    li.active(role='presentation')
-                        a(href='tweets') Tweets
-                            span.badge 42
-                    li(role='presentation')
-                        a(href='myprofile') Profile
-                            span.glyphicon.glyphicon-user
-                form.navbar-form.navbar-left
-                    .form-group
-                    .input-group(role='search')
-                        input.form-control(type='text', placeholder='Search for...')
-                        span.input-group-btn
-                            button.btn.btn-default(type='button')
-                                span.glyphicon.glyphicon-search
-                ul.nav.navbar-nav.navbar-right
-                    li.dropdown
-                        a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-expanded='false')
-                            span.glyphicon.glyphicon-cog
-                            span.caret
-                        ul.dropdown-menu(role='menu')
-                            li
-                                a(href='#')
-                                    span.glyphicon.glyphicon-pencil
-                                    | Edit profile
-                            li
-                                a(href='/')
-                                    span.glyphicon.glyphicon-off
-                                    | Log out
-
 
     form.textForm(action='/tweets', method='POST')
-        textarea(name="tweetText", rows=7, columns=150)
+        textarea.textarea(name="tweetText", rows=5, cols=25)
         br
-        input.btn.btn-primary(type='submit', value='Tweet')
+        input#button.btn.btn-primary(type='submit', value='Tweet')
 
     ul#tweet-list
-        // TODO: Make it beautiful
         -each tweet in tweets
-            //TODO: format date with moment.js
-            li
-                p#date #{tweet.date}
-                p user: #{tweet.user.username}
-                p text: #{tweet.text}
+            li#message.tweets
+                p.date#date #{tweet.date}
+                p.user
+                    img.img(alt='Brand', src="../images/icon.png")
+                    |#{tweet.user.username}
+                p.message #{tweet.text}
 
     script(src="vendor/moment.min.js")
     script(src="scripts/tweets.js")
+
+
