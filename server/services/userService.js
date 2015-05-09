@@ -38,11 +38,11 @@ module.exports = function() {
   return {
 
     index: function(req, res) {
-
+      throw {message: 'not yet implemented'};
     },
 
     show: function(req, res) {
-
+      throw {message: 'not yet implemented'};
     },
 
     create: function(req, res) {
@@ -53,11 +53,11 @@ module.exports = function() {
     },
 
     update: function(req, res) {
-
+      throw {message: 'not yet implemented'};
     },
 
     destroy: function(req, res) {
-
+      throw {message: 'not yet implemented'};
     },
 
     // Non-API functionality
@@ -86,6 +86,10 @@ module.exports = function() {
           else
             return done(null, false); // wrong password
         });
+    },
+
+    isAdmin: function(req, res) {
+      return false;
     },
 
     deserializeUser: function(id, done) {

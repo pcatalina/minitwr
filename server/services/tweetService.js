@@ -53,7 +53,7 @@ module.exports = function() {
     },
 
     show: function(req, res) {
-
+      throw {message: 'not yet implemented'};
     },
 
     create: function(req, res) {
@@ -64,13 +64,14 @@ module.exports = function() {
     },
 
     update: function(req, res) {
-
+      throw {message: 'not yet implemented'};
     },
 
     destroy: function(req, res) {
-
+      throw {message: 'not yet implemented'};
     },
 
+    // Non-API route TODO: get rid of
     postTweet: function(req, res) {
       addTweet(req, res, function(err, tweet) {
         if(err || !tweet) return onError(res, err);
@@ -78,6 +79,7 @@ module.exports = function() {
       });
     },
 
+    // Non-API route TODO: get rid of
     getTweets: function(req, res) {
       getAllTweets(req, res, function(err, tweets) {
         if(err || !tweets) return onError(res, err);
@@ -86,4 +88,3 @@ module.exports = function() {
     }
   };
 };
-

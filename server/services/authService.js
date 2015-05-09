@@ -58,13 +58,19 @@ module.exports = function(app, userService) {
       })(req, res, next)
     },
 
-    isAuthenticated: function(req, res, done) {
-      if(req.isAuthenticated())
-        res.success();
+    isAdmin: function(req, res, next) {
+      if(req.isAuthenticated() && userService.isAdmin(req, res))
+        next();
       else
-        res.fail();
+        return res.json(403, { message: 'user not authenticated' });
     },
 
+    isAuthenticated: function(req, res, next) {
+      if(req.isAuthenticated())
+        next();
+      else
+        return res.json(403, { message: 'user not authenticated' });
+    },
 
     // Non-API functionality
     // TODO: get rid of it
