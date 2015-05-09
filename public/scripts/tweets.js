@@ -13,6 +13,19 @@ $(document).ready(function()
         var message = $(this).text();
         console.log(message);
     });
+
+  /*
+   A test example of API consumption
+   TODO: get rid of
+   */
+  $.get('/api/tweets')
+    .done(function(tweets) {
+      console.log(tweets);
+    })
+    .fail(function(err) {
+      console.log(err);
+    });
+
 });
 
 
