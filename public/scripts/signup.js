@@ -1,21 +1,13 @@
-var fullName = document.getElementById("exampleInputFullName").innerHTML;
 
-var eMail = document.getElementById("exampleInputEmail1").innerHTML;
-var passWord = document.getElementById("exampleInputPassword1").innerHTML;
-//var signUp = false;
+$("input#password").mouseover(function(){
+    $('#password').popover('show');
+});
 
-function validateFullName() {
-  var x = document.getElementById("exampleInputFullName").innerHTML;
-  if(x == null || x == "") {
-    alert("Name must be filled out");
-    return false;
-  }
+$("input#password").mouseout(function(){
+    $('#password').popover('hide');
+});
 
-}
-
-function validateEmail(eMail) {
-  if(eMail = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i);
-}
+var passWord = document.getElementById("password").innerHTML;
 
 function password(passWord) {
   var i = 0;
@@ -31,6 +23,41 @@ function password(passWord) {
   }
   return accepted;
 }
+
+$(document).ready(function(){
+    $("button").click(function(){
+        if ((password(passWord))== true)
+        {
+            $.post({password: passWord});
+        }
+        else
+        {
+            $("#password").popover({ title: 'Look! A bird!', content: 'ewfew' });
+        }
+        console.log(passWord);
+        });
+});
+
+
+
+/*var fullName = document.getElementById("exampleInputFullName").innerHTML;
+
+var eMail = document.getElementById("exampleInputEmail1").innerHTML;
+//var signUp = false;
+
+function validateFullName() {
+  var x = document.getElementById("exampleInputFullName").innerHTML;
+  if(x == null || x == "") {
+    alert("Name must be filled out");
+    return false;
+  }
+
+}
+
+function validateEmail(eMail) {
+  if(eMail = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i);
+}
+
 
 
 function signUp() {
