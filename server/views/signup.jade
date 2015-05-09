@@ -1,8 +1,5 @@
 extends includes/layout
 
-script.
-    document.getElementById("buttonSignUp").innerHTML = signUp();
-
 
 block content
 
@@ -18,15 +15,17 @@ block content
             input.form-control.registerBlanck(name="email", type='email',
             placeholder='Enter email')
         .form-group
-            input.form-control.registerBlanck(name="password", type='password',
-            placeholder='Password')
+            input#password.form-control.registerBlanck(name="password", type='password',
+            placeholder='Password', data-container='body', data-toggle='popover',
+            data-placement='right', data-content='Length(min): 8 car\nContain(min/one):A-Z & ASCII')
         .form-group
             label(for='exampleInputFile')
                 span.glyphicon.glyphicon-picture
                 | (optional)
-        input#exampleInputFile(class="uploadFile", type='file')
-
+        input.uploadFile#exampleInputFile(type='file')
+        br
         button#buttonSignUp.btn.btn-default.submit-button(type='submit') Sign up
 
+    script(src="scripts/signup.js")
 
 
