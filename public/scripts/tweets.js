@@ -6,9 +6,7 @@ $(document).ready(function()
         $(this).text(moment(date).fromNow());
 
     });
-});
 
-$(document).ready(function () {
     var messages = $("li#message");
     messages.each(function (j) {
         $(messages[j + 1]).insertBefore(messages[j]);
