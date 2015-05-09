@@ -1,6 +1,7 @@
 'use strict';
 
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+process.env.MONGOLAB_URI = process.env.MONGOLAB_URI || 'mongodb://localhost/minitwr';
 
 var express = require('express');
 var app = express();
@@ -11,7 +12,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/minitwr');
+mongoose.connect(process.env.MONGOLAB_URI);
 var router = require('./router');
 
 // view engine setup
