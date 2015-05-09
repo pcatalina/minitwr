@@ -60,6 +60,8 @@ module.exports = function() {
 
     },
 
+    // Non-API functionality
+    // TODO: get rid of it
     register: function(req, res, next) {
       addUser(req, res, function(err, user) {
         if(err) return onError(err, req, res);
@@ -67,9 +69,11 @@ module.exports = function() {
       });
     },
 
-    authenticateUser: function(username, password, done) {
+    // Non-API functionality
+    // TODO: get rid of it
+    authenticateUser: function(email, password, done) {
       User.findOne({
-          username: username.toLowerCase()
+          email: email
         },
         function(err, user) {
           if(err)
