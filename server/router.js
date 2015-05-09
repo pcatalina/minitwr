@@ -38,6 +38,7 @@ module.exports = function(express, app, mongoose) {
   router.post('/tweets', authService.ensureAuthenticated, tweetService.postTweet);
 
 // API routes
+  router.use('/api/auth', require('./services/authRouter')(authService));
   router.use('/api/users', require('./services/userRouter')(userService));
   router.use('/api/tweets', require('./services/tweetRouter')(tweetService));
 

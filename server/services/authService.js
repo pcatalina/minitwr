@@ -35,6 +35,39 @@ module.exports = function(app, userService) {
   });
 
   return {
+
+    // API functionality
+    authenticate: function(req, res, next) {
+      passport.authenticate('local', function(err, user, info) {
+
+        var error = err || info;
+
+        if(error)
+          return res.json(401, error);
+
+        if(!user)
+          return res.json(404, { message: 'Something went wrong, please try again.' });
+
+          req.logIn(user, function(err) {
+            if(err)
+              return res.json(404, err);
+            else
+              return res.json(200, user);
+          });
+
+      })(req, res, next)
+    },
+
+    isAuthenticated: function(req, res, done) {
+      if(req.isAuthenticated())
+        res.success();
+      else
+        res.fail();
+    },
+
+
+    // Non-API functionality
+    // TODO: get rid of it
     logIn: function(req, res, next) {
 
       passport.authenticate('local',
