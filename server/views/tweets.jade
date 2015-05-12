@@ -1,0 +1,22 @@
+extends includes/basic+navbar
+
+block content
+
+    form.textForm(action='/tweets', method='POST')
+        textarea.textarea(name="tweetText", rows=5, cols=25)
+        br
+        input#button.btn.btn-primary(type='submit', value='Tweet')
+
+    ul#tweet-list
+        -each tweet in tweets
+            li#message.tweets
+                p.date#date #{tweet.date}
+                p.user
+                    img.img(alt='Brand', src="../images/icon.png")
+                    |#{tweet.user.username}
+                p.message #{tweet.text}
+
+    script(src="vendor/moment.min.js")
+    script(src="scripts/tweets.js")
+
+

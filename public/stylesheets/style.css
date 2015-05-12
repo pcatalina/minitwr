@@ -1,95 +1,132 @@
-@font-face
-{
-    font-family: "Barata Display Beta";
-    src: url(../text_fonts/BarataDisplayBetaVersion.otf)
+@font-face {
+    font-family: "Wolf in the City";
+    src: url(../fonts/WolfintheCity.otf)
 }
 
-@font-face
-{
-    font-family: "Claire Hand Regular";
-    src: url(../text_fonts/ClaireHandRegular.otf)
+@font-face {
+    font-family: "MyriadPro";
+    src: url(../fonts/MyriadPro.otf)
 }
 
-body
-{
+
+body {
     padding: 20px;
-    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    font: 16px "MyriadPro", Helvetica, Arial, sans-serif ;
     color: #245269;
     text-align: center;
     background-color: #204d74;
-    background-image: url(../images/wall.jpeg);
+    background-image: url(../images/foggy_birds.png);
     background-repeat: repeat;
+}
+
+.textForm{
+    //background-image: url("../images/tree_bark.png");
+    //background-repeat: repeat;
+    background: transparent;
+    width: 50%;
+    height: 450px;
+    padding: 12px 10px 12px 10px;
+    float:left;
+    border-radius: 4px;
 
 }
-.buttonSignIn
-{
+
+.tweets{
+    width: 51%;
+    list-style-type: none;
+    background: rgba(0, 0, 0, 0.1);
+    float: right;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.date{
+    font: 13px "Arial";
+    color: #346a85;
+    text-align: right;
+    padding: 7px 10px 0px 5px;
+    margin-bottom: 0px;
+    font-style: italic;
+}
+
+.user{
+    font: 16px "MyriadPro";
+    color: #7bb4e3;
+    text-align: left;
+    padding: 0px 10px 0px 5px;
+    margin-bottom: 0px;
+    font-weight: bold;
+
+}
+
+.message{
+    font: 16px "MyriadPro";
+    color: #346a85;
+    text-align: left;
+    padding: 0px 10px 0px 60px;
+
+}
+.textarea{
+    background-image: url("../images/swirl.png");
+    width: 100%;
+}
+
+
+.buttonSignIn {
     width: 400px;
     height: 200px;
     background-image: url(../images/flyingbirds.jpg);
-    font: 50px "Claire Hand Regular";
-
+    color: inherit;
+    font: 40px "MyriadPro" !important;
 }
 
-.buttonSignUp
-{
+.buttonSignUp {
     width: 400px;
     height: 200px;
     background-image: url(../images/staying%20birds.jpg);
-    font: 50px "Claire Hand Regular";
+    color: inherit;
+    font: 40px "MyriadPro" !important;
 
 }
 
-.miniTW
-{
-    width: 400px;
-    height: 200px;
-    font: 150px "Barata Display Beta";
-    text-align-all:  center;
-    margin: 0 auto ;
-    text-decoration: none !important
+.miniTW {
+    margin-top: -100px;
+    font: 250px "Wolf in the City";
+    text-align-all: center;
+    //margin: 0 ;
+    text-decoration: none !important;
 }
-.registerForm
-{
+
+.registerForm {
     align-items: center;
-    font: 20px "Claire Hand Regular";
+    font: 20px "MyriadPro";
 }
 
-.registerBlanck
-{
+.registerBlanck {
     width: 300px;
     align-self: center;
     margin: 0 auto;
 }
-.uploadFile
-{
+
+.uploadFile {
     width: 300px;
     align-self: center;
     margin: 0 auto;
     padding-left: 50px;
 }
 
-.rightPosition
-{
+.rightPosition {
     text-align: right;
 }
 
-.img
-{
-    padding:0; margin:0;
+.img {
+    padding: 0;
+    margin: 0;
+    margin-right: 5px;
+    border-radius: 10px;
 }
 
-.navbar
-{
-    font: 16px "Claire Hand Regular";
+.navbar {
+    font: 16px "MyriadPro";
 }
-
-/*a {*/
-  /*color: lightseagreen;*/
-/*}*/
-
-
-/*.tweet-box{*/
-    /*background-color: cornsilk;*/
-    /*font: 14px "Lucida Console", Helvetica, Arial;*/
-/*}*/
 
