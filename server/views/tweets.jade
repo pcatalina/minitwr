@@ -1,13 +1,13 @@
-extends includes/basic+navbar
+extends includes/navbar
 
 block content
 
-    form.textForm(action='/tweets', method='POST')
-        textarea.textarea(name="tweetText", rows=5, cols=25)
-        br
-        input#button.btn.btn-primary(type='submit', value='Tweet')
+    form.col-md-6()
+        textarea#text.textarea(rows=5)
+        p#alert
+        input#button.btn.btn-primary(type='button', value='Tweet')
 
-    ul#tweet-list
+    ul.col-md-6#tweet-list
         -each tweet in tweets
             li#message.tweets
                 p.date#date #{tweet.date}
