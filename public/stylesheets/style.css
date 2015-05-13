@@ -19,25 +19,12 @@ body {
     background-repeat: repeat;
 }
 
-.textForm{
-    //background-image: url("../images/tree_bark.png");
-    //background-repeat: repeat;
-    background: transparent;
-    width: 50%;
-    height: 450px;
-    padding: 12px 10px 12px 10px;
-    float:left;
-    border-radius: 4px;
-
-}
-
 .tweets{
-    width: 51%;
     list-style-type: none;
     background: rgba(0, 0, 0, 0.1);
-    float: right;
     margin-bottom: 10px;
     border-radius: 5px;
+    padding: 2px 5px 5px 2px;
 }
 
 .date{
@@ -93,7 +80,6 @@ body {
     margin-top: -100px;
     font: 250px "Wolf in the City";
     text-align-all: center;
-    //margin: 0 ;
     text-decoration: none !important;
 }
 
