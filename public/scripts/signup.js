@@ -28,7 +28,11 @@ $(document).ready(function(){
     $("button").click(function(){
         if ((password(passWord))== true)
         {
-            $.post({password: passWord});
+            $.post("/api/users",{
+                username: username,
+                email: email,
+                password: password
+            });
         }
         else
         {

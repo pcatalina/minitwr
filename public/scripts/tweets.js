@@ -1,49 +1,53 @@
-$(document).ready(function() {
-  var dates = $("p#date");
-  dates.each(function(i) {
-    var date = $(this).text();
-    $(this).text(moment(date).fromNow());
+$(document).ready(function () {
 
-  });
+    $("input#button").click(function () {
 
-  var messages = $("li#message");
-  messages.each(function(j) {
-    $(messages[j + 1]).insertBefore(messages[j]);
-    var message = $(this).text();
-    console.log(message);
-  });
+        var text = $('textarea#text').first().val();
+        console.log(text);
+        if (text === "") {
+            $("p#alert").text("Write something !!!");
+        }
+        else {
+            $.post('/api/tweets', {
+                tweetText: text
+            })
+                .done(function (res) {
 
-  /*
-   A test example of API consumption: tweets retrieval
-   TODO: get rid of
-   */
-  $.get('/api/tweets')
-    .done(function(tweets) {
-      console.log(tweets);
-    })
-    .fail(function(err) {
-      console.log(err);
+                    appendTweet(function (date, user, message) {
+                        date.text(res.date).text(moment(res.date).fromNow());
+                        user.append(res.user);
+                        message.text(res.text);
+
+                    });
+
+                })
+                .fail(function (res) {
+                    console.log(res);
+                });
+
+        }
+
     });
-
-
-  /*
-   A test example of API consumption: tweet posting
-   TODO: get rid of
-   */
-  var newTweet = {
-    tweetText: "Blah blah blah"
-  };
-
-  $.post('/api/tweets', newTweet)
-    .done(function(res) {
-      console.log(res);
-    })
-    .fail(function(res) {
-      console.log(res);
-    });
-
 });
 
+function appendTweet(done) {
+    var ul = $("ul#tweet-list");
+    var listItem = $("<li>").addClass("bounceInRight animated tweets media");
+    ul.prepend(listItem);
 
+    var date = $("<p>").addClass("date");
 
+    listItem.append(date);
 
+    var user = $("<p>").addClass("media-heading user");
+    var img = $("<img>").addClass("img pull-left media-object")
+                        .attr('src', '../images/icon.png');
+    user.append(img);
+
+    listItem.append(user);
+
+    var message = $("<p>").addClass("message");
+
+    listItem.append(message);
+    done(date, user, message);
+}
