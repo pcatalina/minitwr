@@ -20,6 +20,7 @@ $(document).ready(function () {
 
                     });
 
+                    $('textarea#text').val('');
                 })
                 .fail(function (res) {
                     console.log(res);

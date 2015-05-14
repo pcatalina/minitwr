@@ -3,28 +3,23 @@ extends includes/layout
 
 block content
 
-    form(class="registerForm", action="/signup", method="POST")
+    form.registerForm( action="/signup", method="POST")
         label(for='exampleInputText')
             img(src="../images/TwitterIntro-48.png")
             | New to MiniTW?
 
         .form-group
-            input.form-control.registerBlanck(name="username", type='text',
+            input#username.form-control.registerBlanck(name="username", type='text',
             placeholder='Full name')
         .form-group
-            input.form-control.registerBlanck(name="email", type='email',
+            input#email.form-control.registerBlanck(name="email", type='email',
             placeholder='Enter email')
         .form-group
             input#password.form-control.registerBlanck(name="password", type='password',
             placeholder='Password', data-container='body', data-toggle='popover',
             data-placement='right', data-content='Length(min): 8 car\nContain(min/one):A-Z & ASCII')
-        .form-group
-            label(for='exampleInputFile')
-                span.glyphicon.glyphicon-picture
-                | (optional)
-        input.uploadFile#exampleInputFile(type='file')
-        br
-        button#buttonSignUp.btn.btn-default.submit-button(type='submit') Sign up
+
+        button#buttonSignUp.btn.btn-default.submit-button(type='button') Sign up
 
     script(src="scripts/signup.js")
 
