@@ -15,7 +15,7 @@ $(document).ready(function () {
 
                     appendTweet(function (date, user, message) {
                         date.text(res.date).text(moment(res.date).fromNow());
-                        user.append(res.user);
+                        user.append(res.user.username);
                         message.text(res.text);
 
                     });
