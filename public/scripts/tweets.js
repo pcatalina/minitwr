@@ -15,7 +15,7 @@ $(document).ready(function() {
 
           appendTweet(function(date, user, message) {
             date.text(res.date).text(moment(res.date).fromNow());
-            user.append(res.user.username);
+            user.text(res.user.username);
             message.text(res.text);
 
           });
@@ -32,23 +32,18 @@ $(document).ready(function() {
 });
 
 function appendTweet(done) {
-  var ul = $("ul#tweet-list");
-  var listItem = $("<li>").addClass("bounceInRight animated tweets media");
-  ul.prepend(listItem);
+  $.get('/partials/tweet')
+    .done(function(res) {
+      var tweet = $(res);
+      $("ul#tweet-list").prepend(tweet);
 
-  var date = $("<p>").addClass("date");
+      var date = tweet.find('p#date'),
+        username = tweet.find('p#username'),
+        message = tweet.find('p.message');
 
-  listItem.append(date);
-
-  var user = $("<p>").addClass("media-heading user");
-  var img = $("<img>").addClass("img pull-left media-object")
-    .attr('src', '../images/icon.png');
-  user.append(img);
-
-  listItem.append(user);
-
-  var message = $("<p>").addClass("message");
-
-  listItem.append(message);
-  done(date, user, message);
+      done(date, username, message);
+    })
+    .fail(function(res) {
+      console.log(res);
+    });
 }

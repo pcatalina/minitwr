@@ -22,6 +22,12 @@ module.exports = function(express, app, mongoose) {
       res.render(req.param('path'), { user: req.user });
     });
 
+  router.get('/partials/:path',
+    authService.ensureAuthenticated,
+    function(req, res) {
+      res.render('partials/' + req.param('path'), { user: req.user });
+    });
+
 // TODO: move to API
   router.post('/signup', userService.register);
 
