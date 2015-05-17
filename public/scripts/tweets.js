@@ -12,36 +12,31 @@ $(document).ready(function() {
         tweetText: text
       })
         .done(function(res) {
+          var date = moment(res.date).fromNow(),
+            username = res.user.username,
+            message = res.text;
 
-          appendTweet(function(date, user, message) {
-            date.text(res.date).text(moment(res.date).fromNow());
-            user.text(res.user.username);
-            message.text(res.text);
-
-          });
+          appendTweet(date, username, message);
 
           $('textarea#text').val('');
         })
         .fail(function(res) {
           console.log(res);
         });
-
     }
-
   });
 });
 
-function appendTweet(done) {
-  $.get('/partials/tweet')
+function appendTweet(date, username, message) {
+  $.get('/partials/tweet')  // get partial html from server
     .done(function(res) {
-      var tweet = $(res);
-      $("ul#tweet-list").prepend(tweet);
+      var tweet = $(res);   // create DOM element from it
+      $("ul#tweet-list").prepend(tweet);  // prepend to list
 
-      var date = tweet.find('p#date'),
-        username = tweet.find('p#username'),
-        message = tweet.find('p.message');
-
-      done(date, username, message);
+      // find text elements and put text
+      tweet.find('p#date').text(date);
+      tweet.find('p#username').text(username);
+      tweet.find('p.message').text(mesage);
     })
     .fail(function(res) {
       console.log(res);
