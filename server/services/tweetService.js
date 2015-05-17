@@ -69,7 +69,7 @@ module.exports = function() {
     },
 
     show: function(req, res) {
-      throw {message: 'not yet implemented'};
+      throw { message: 'not yet implemented' };
     },
 
     create: function(req, res) {
@@ -80,11 +80,11 @@ module.exports = function() {
     },
 
     update: function(req, res) {
-      throw {message: 'not yet implemented'};
+      throw { message: 'not yet implemented' };
     },
 
     destroy: function(req, res) {
-      throw {message: 'not yet implemented'};
+      throw { message: 'not yet implemented' };
     },
 
     // Non-API route TODO: get rid of
