@@ -10,13 +10,12 @@ module.exports = function(app, userService) {
 
   passport.use(new LocalStrategy(
     function(username, password, done) {
-
-      console.log("Local auth\nUsername:\t" + username + "n\Password:\t" + password);
-
       userService.authenticateUser(username, password, function(err, user) {
-
+        if(err) {
+          console.log(err);
+          return done(err, false);
+        }
         if(!user) {
-          console.log("local auth failed!");
           return done(null, false, { message: 'Invalid username and/or password' });
         }
         else {
@@ -48,12 +47,12 @@ module.exports = function(app, userService) {
         if(!user)
           return res.json(404, { message: 'Something went wrong, please try again.' });
 
-          req.logIn(user, function(err) {
-            if(err)
-              return res.json(404, err);
-            else
-              return res.json(200, user);
-          });
+        req.logIn(user, function(err) {
+          if(err)
+            return res.json(404, err);
+          else
+            return res.json(200, user);
+        });
 
       })(req, res, next)
     },
