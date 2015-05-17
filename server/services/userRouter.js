@@ -18,7 +18,7 @@ module.exports = function(userService, authService) {
 
   router.get('/', authService.isAuthenticated, userService.index);
   router.get('/:id', authService.isAuthenticated, userService.show);
-  router.post('/', authService.isAuthenticated, userService.create);
+  router.post('/', userService.create);
   router.put('/:id', authService.isAuthenticated, userService.update);
   router.delete('/:id', authService.isAdmin, userService.destroy);
 
