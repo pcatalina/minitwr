@@ -36,7 +36,7 @@ function appendTweet(date, username, message) {
       // find text elements and put text
       tweet.find('p#date').text(date);
       tweet.find('p#username').text(username);
-      tweet.find('p.message').text(mesage);
+      tweet.find('p.message').text(message);
     })
     .fail(function(res) {
       console.log(res);
