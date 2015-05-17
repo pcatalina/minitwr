@@ -4,16 +4,33 @@ module.exports = function() {
 
   var mongoose = require('mongoose'),
     Schema = mongoose.Schema,
+    autopopulate = require('mongoose-autopopulate'),
     moment = require('moment');
 
   var tweetSchema = new Schema({
-      user: { type: Schema.Types.ObjectId, ref: 'User' },
+      user: {
+        type: Schema.Types.ObjectId, ref: 'User',
+        autopopulate: { select: 'username' }
+      },
       text: String,
       date: Date
     },
     { versionKey: false });
 
+  tweetSchema.plugin(autopopulate);
+
   var Tweet = mongoose.model('Tweet', tweetSchema);
+
+  function populate(tweet, next) {
+    Tweet.populate(tweet, { path: 'user' }, function(err, tweet) {
+      if(err) return console.log(err);
+      next(err);
+    });
+  }
+
+  Tweet.schema.post('save', populate);
+  Tweet.schema.post('create', populate);
+
 
   function onError(err, req, res) {
     console.log(err);
@@ -22,7 +39,6 @@ module.exports = function() {
 
   function getAllTweets(req, res, done) {
     Tweet.find()
-      .populate('user', 'username')
       .exec(function(err, tweets) {
         if(err) return onError(res, err);
         done(err, tweets);
