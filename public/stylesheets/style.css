@@ -60,7 +60,7 @@ body {
 
 
 .buttonSignIn {
-    width: 400px;
+    width: 350px;
     height: 200px;
     background-image: url(../images/flyingbirds.jpg);
     color: inherit;
@@ -68,7 +68,7 @@ body {
 }
 
 .buttonSignUp {
-    width: 400px;
+    width: 350px;
     height: 200px;
     background-image: url(../images/staying%20birds.jpg);
     color: inherit;
@@ -78,7 +78,7 @@ body {
 
 .miniTW {
     margin-top: -50px;
-    font: 24.9vw "Wolf in the City";
+    font: 26.9vw "Wolf in the City";
     text-align-all: center;
     text-decoration: none !important;
 }
@@ -116,3 +116,7 @@ body {
     font: 16px "MyriadPro";
 }
 
+.pAlert{
+    font: 12px "MyriadPro";
+    color: #245269;
+}
