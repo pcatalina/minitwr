@@ -1,10 +1,4 @@
-$("input#password").mouseover(function () {
-    $('#password').popover('show');
-});
 
-$("input#password").mouseout(function () {
-    $('#password').popover('hide');
-});
 
 function reset($elem) {
     $elem.before($elem.clone(true));
@@ -18,7 +12,7 @@ function validPassword(password) {
 }
 
 function validUserName(username) {
-    return (username == null || username.length < 3 )
+    return (username == null || username.length < 2 )
 }
 
 function validEmail(email) {
@@ -42,23 +36,41 @@ $(document).ready(function () {
                 pswd.removeClass();
                 pswd = reset(pswd);
                 pswd.addClass("body form-control registerBlanck shake animated");
+                $("p#alertPassword").text("Min. size : 8");
+            }
+            else
+            {
+            $("p#alertPassword").text("");
+
             }
             if (validUserName(username)) {
                 var usnm = $('input#username');
                 usnm.removeClass();
                 usnm = reset(usnm);
                 usnm.addClass("body form-control registerBlanck shake animated");
+                $("p#alertUsername").text("Min. size : 3  Example: Bob");
+            }
+            else
+            {
+            $("p#alertUsername").text("");
+
             }
             if (validEmail(email)) {
                 var mail = $('input#email');
                 mail.removeClass();
                 mail = reset(mail);
                 mail.addClass("body form-control registerBlanck shake animated");
+                $("p#alertEmail").text("Example: bob@mail.com");
             }
+            else
+            {
+            $("p#alertEmail").text("");
+
+            }
+
 
         }
         else {
-
             $.post("/api/users", {
                 username: username,
                 email: email,
@@ -74,16 +86,3 @@ $(document).ready(function () {
         }
     });
 });
-
-
-/*
-
-
-
- function signUp() {
- if((validateFullName()) && (validateEmail(eMail)) && (password(passWord))) {
- window.location.href = 'myprofile';
- }
- }
-
- */

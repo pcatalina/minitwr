@@ -5,19 +5,20 @@ block content
 
     form.registerForm( action="/signup", method="POST")
         label(for='exampleInputText')
-            img(src="../images/TwitterIntro-48.png")
             | New to MiniTW?
 
         .form-group
             input#username.form-control.registerBlanck(name="username", type='text',
             placeholder='Full name')
+            p.pAlert#alertUsername
         .form-group
             input#email.form-control.registerBlanck(name="email", type='email',
             placeholder='Enter email')
+            p.pAlert#alertEmail
         .form-group
             input#password.form-control.registerBlanck(name="password", type='password',
-            placeholder='Password', data-container='body', data-toggle='popover',
-            data-placement='right', data-content='Length(min): 8 car\nContain(min/one):A-Z & ASCII')
+            placeholder='Password')
+            p.pAlert#alertPassword
 
         button#buttonSignUp.btn.btn-default.submit-button(type='button') Sign up
 
